@@ -1,0 +1,20 @@
+<h1>WELCOME <%= @username%></h1>
+
+<form action="/tweets" method="post"><br>
+  <hr>
+  <label><h2>Compose new Tweet</h2></label>
+  <textarea rows="5" cols="50" id="number" name="details" placeholder="Coding Rocks"></textarea>
+  <br><br>
+  <input type="submit" value="Tweet">
+</form>
+
+<div class="container"><br>
+  <h3>Tweets</h3>
+  <% @tweet.each do |tweet1| %>
+    <p><%= tweet1.details %></p>
+    <form action="/posts/<%= tweet1.id %>" method="post">
+      <input type="hidden" name="_method" value="delete">
+      <button value="submit">Delete</button>
+    </form>
+  <% end %>
+</div>
